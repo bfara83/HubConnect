@@ -77,6 +77,7 @@ preferences
 	"power":			[driver: "Power Meter", selector: "powerMeters", attr: ["power"]],
 	"presence":			[driver: "Presence Sensor", selector: "genericPresences", attr: ["presence", "battery"]],
 	"ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", attr: ["numberOfButtons", "pushed", "motion"]],
+	"ringcamera":		[driver: "Ring Floodlight Camera", selector: "ringfloodlight", attr: ["switch", "motion"]],
 	"rgbbulb":			[driver: "RGB Bulb", selector: "genericRGBs", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
 	"shock":			[driver: "Shock Sensor", selector: "genericShocks", attr: ["shock", "battery"]],
 	"siren":			[driver: "Siren", selector: "genericSirens", attr: ["switch", "alarm", "battery"]],
@@ -84,7 +85,8 @@ preferences
 	"smoke":			[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
 	"switch":			[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
 	"thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
-	"valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
+	"temphumidity":     [driver: "Temperature Humidity Sensor", selector: "temphumidity", attr: ["battery", "temperature", "humidity"]],
+    "valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
 	"windowshade":		[driver: "Window Shade", selector: "windowShades", attr: ["switch", "position", "windowShade"]],
 	"zwaverepeater":	[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
 ]
@@ -1087,12 +1089,12 @@ def connectPage()
 */
 def devicePage()
 {
-	def sensorsPageCount = genericContacts?.size() ?: genericMultipurposes?.size() ?: genericOmnipurposes?.size() ?: genericMotions?.size() ?: irisV3Motions?.size() ?: domeMotions?.size() ?: genericShocks?.size()
+	def sensorsPageCount = genericContacts?.size() ?: genericMultipurposes?.size() ?: genericOmnipurposes?.size() ?: temphumidity?.size() ?: genericMotions?.size() ?: irisV3Motions?.size() ?: domeMotions?.size() ?: genericShocks?.size()
 	def shackratsDriverPageCount = smartPlugs?.size() ?: zwaveRepeaters?.size()
 	def switchDimmerBulbPageCount = genericSwitches?.size() ?: genericDimmers?.size() ?: genericRGBs?.size() ?: pocketSockets?.size() ?: energyPlugs?.size() ?: powerMeters?.size()
 	def safetySecurityPageCount = genericSmokeCO?.size() ?: smartSmokeCO?.size() ?: genericMoistures?.size() ?: genericKeypads?.size() ?: genericLocks?.size() ?: genericSirens?.size()
 	def otherDevicePageCount = genericPresences?.size()?: smartThingsArrival?.size() ?: genericButtons?.size() ?: genericThermostats?.size() ?: genericValves?.size() ?: garageDoors?.size() ?: windowShades?.size()
-	def stCloudDevicesCount = arloProCameras?.size() ?: arloQCameras?.size() ?: ringDoorbellPros?.size()
+	def stCloudDevicesCount = arloProCameras?.size() ?: arloQCameras?.size() ?: ringDoorbellPros?.size() ?: ringfloodlight?.size()
 
 	def totalNativeDevices = 0
 	def requiredDrivers = []
@@ -1160,6 +1162,10 @@ def sensorsPage()
 		section("-= Select Omnipurpose Sensors (${genericOmnipurposes?.size() ?: "0"} connected) =-")
 		{ 
 			input "genericOmnipurposes", "capability.relativeHumidityMeasurement", title: "Generic Omni-Sensor (contact, temperature, humidity, illuminance):", required: false, multiple: true, defaultValue: null
+		}
+        section("-= Select Temperature Humidity Sensors (${temphumidity?.size() ?: "0"} connected) =-")
+		{ 
+			input "temphumidity", "capability.temperatureMeasurement", title: "Temperature Humidity Sensor (temperature, humidity):", required: false, multiple: true, defaultValue: null
 		}
 		section("-= Select Motion Sensors (${genericMotions?.size() + irisV3Motions?.size() + domeMotions?.size() ?: "0"} connected) =-")
 		{ 
@@ -1322,7 +1328,7 @@ def otherDevicePage()
 		{
 			input "garageDoors", "capability.garageDoorControl", title: "Garage Doors (door):", required: false, multiple: true, defaultValue: null
 		}
-		section("-= Select Window Shades (${windowShades?.size() ?: "0"} connected) =-")
+		section("<b>-= Select Window Shades (${windowShades?.size() ?: "0"} connected) =-</b>")
 		{
 			input "windowShades", "capability.windowShade", title: "Window Shades:", required: false, multiple: true, defaultValue: null
 		}
@@ -1354,6 +1360,10 @@ def stCloudDevices()
 		section("-= Ring Doorbell Pros =-")
 		{
 			input "ringDoorbellPros", "device.RingDoorbellPro", title: "Ring Doorbell Pros (pushed, motion):", required: false, multiple: true, defaultValue: null
+		}
+		section("-= Ring Floodlight Cameras =-")
+		{
+			input "ringfloodlight", "capability.motionSensor", title: "Ring Floodlight Cameras (switch, motion):", required: false, multiple: true, defaultValue: null
 		}
 	}
 }
