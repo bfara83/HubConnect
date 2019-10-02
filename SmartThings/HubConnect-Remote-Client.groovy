@@ -48,7 +48,7 @@ preferences
 	page(name: "otherDevicePage")
 	page(name: "stCloudDevices")
 	page(name: "customDevicePage")
-    page(name: "shmConfigPage")
+        page(name: "shmConfigPage")
 }
 
 
@@ -57,40 +57,39 @@ preferences
 [
 	"arlocamera":		[driver: "Arlo Camera", selector: "arloProCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
 	"arloqcamera":		[driver: "Arlo Camera", selector: "arloQCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
-	"arrival":			[driver: "Arrival Sensor", selector: "smartThingsArrival", attr: ["presence", "battery", "tone"]],
-	"button":			[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
-	"contact":			[driver: "Contact Sensor", selector: "genericContacts", attr: ["contact", "temperature", "battery"]],
-	"dimmer":			[driver: "Dimmer", selector: "genericDimmers", attr: ["switch", "level"]],
+	"arrival":		[driver: "Arrival Sensor", selector: "smartThingsArrival", attr: ["presence", "battery", "tone"]],
+	"button":		[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
+	"contact":		[driver: "Contact Sensor", selector: "genericContacts", attr: ["contact", "temperature", "battery"]],
+	"dimmer":		[driver: "Dimmer", selector: "genericDimmers", attr: ["switch", "level"]],
 	"domemotion":		[driver: "Dome Motion Sensor", selector: "domeMotions", attr: ["motion", "temperature", "illuminance", "battery"]],
 	"energyplug":		[driver: "DomeAeon Plug", selector: "energyPlugs", attr: ["switch", "power", "voltage", "current", "energy", "acceleration"]],
 	"fancontrol":		[driver: "Fan Controller", selector: "fanControl", attr: ["speed"]],
 	"garagedoor":		[driver: "Garage Door", selector: "garageDoors", attr: ["door", "contact"]],
 	"irissmartplug":	[driver: "Iris Smart Plug", selector: "smartPlugs", attr: ["switch", "power", "voltage", "ACFrequency"]],
 	"irisv3motion":		[driver: "IrisV3 Motion Sensor", selector: "irisV3Motions", attr: ["motion", "temperature", "humidity", "battery"]],
-	"keypad":			[driver: "Keypad", selector: "genericKeypads", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
-	"lock":				[driver: "Lock", selector: "genericLocks", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
-	"moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
-	"motion":			[driver: "Motion Sensor", selector: "genericMotions", attr: ["motion", "temperature", "battery"]],
+	"keypad":		[driver: "Keypad", selector: "genericKeypads", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
+	"lock":			[driver: "Lock", selector: "genericLocks", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
+	"moisture":		[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
+	"motion":		[driver: "Motion Sensor", selector: "genericMotions", attr: ["motion", "temperature", "battery"]],
 	"multipurpose":		[driver: "Multipurpose Sensor", selector: "genericMultipurposes", attr: ["contact", "temperature", "battery", "acceleration", "threeAxis"]],
 	"omnipurpose":		[driver: "Omnipurpose Sensor", selector: "genericOmnipurposes", attr: ["motion", "temperature", "humidity", "illuminance", "ultravioletIndex", "tamper", "battery"]],
 	"pocketsocket":		[driver: "Pocket Socket", selector: "pocketSockets", attr: ["switch", "power"]],
-	"power":			[driver: "Power Meter", selector: "powerMeters", attr: ["power"]],
-	"presence":			[driver: "Presence Sensor", selector: "genericPresences", attr: ["presence", "battery"]],
+	"power":		[driver: "Power Meter", selector: "powerMeters", attr: ["power"]],
+	"presence":		[driver: "Presence Sensor", selector: "genericPresences", attr: ["presence", "battery"]],
 	"ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", attr: ["numberOfButtons", "pushed", "motion"]],
 	"ringcamera":		[driver: "Ring Floodlight Camera", selector: "ringfloodlight", attr: ["switch", "motion"]],
-	"rgbbulb":			[driver: "RGB Bulb", selector: "genericRGBs", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
-	"shock":			[driver: "Shock Sensor", selector: "genericShocks", attr: ["shock", "battery"]],
-	"siren":			[driver: "Siren", selector: "genericSirens", attr: ["switch", "alarm", "battery"]],
+	"rgbbulb":		[driver: "RGB Bulb", selector: "genericRGBs", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
+	"shock":		[driver: "Shock Sensor", selector: "genericShocks", attr: ["shock", "battery"]],
+	"siren":		[driver: "Siren", selector: "genericSirens", attr: ["switch", "alarm", "battery"]],
 	"smartsmoke":		[driver: "Smart Smoke/CO", selector: "smartSmokeCO", attr: ["smoke", "carbonMonoxide", "battery", "temperature", "humidity", "switch", "level", "hue", "saturation", "pressure"]],
-	"smoke":			[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
-	"switch":			[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
+	"smoke":		[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
+	"switch":		[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
 	"thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
-	"temphumidity":     [driver: "Temperature Humidity Sensor", selector: "temphumidity", attr: ["battery", "temperature", "humidity"]],
-    "valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
+	"temphumidity":         [driver: "Temperature Humidity Sensor", selector: "temphumidity", attr: ["battery", "temperature", "humidity"]],
+        "valve":		[driver: "Valve", selector: "genericValves", attr: ["valve"]],
 	"windowshade":		[driver: "Window Shade", selector: "windowShades", attr: ["switch", "position", "windowShade"]],
 	"zwaverepeater":	[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
 ]
-
 
 // Mapping to receive events - Note: ST can only support 4 path parts!
 mappings
