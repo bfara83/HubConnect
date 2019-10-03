@@ -1162,11 +1162,11 @@ def sensorsPage()
 		{ 
 			input "genericOmnipurposes", "capability.relativeHumidityMeasurement", title: "Generic Omni-Sensor (contact, temperature, humidity, illuminance):", required: false, multiple: true, defaultValue: null
 		}
-        section("-= Select Temperature Humidity Sensors (${temphumidity?.size() ?: "0"} connected) =-")
+                section("-= Select Temperature Humidity Sensors (${temphumidity?.size() ?: "0"} connected) =-")
 		{ 
 			input "temphumidity", "capability.relativeHumidityMeasurement", title: "Temperature Humidity Sensor (temperature, humidity):", required: false, multiple: true, defaultValue: null
 		}
-		section("-= Select Motion Sensors (${genericMotions?.size() + irisV3Motions?.size() + domeMotions?.size() ?: "0"} connected) =-")
+		Section("-= Select Motion Sensors (${((genericMotions?.size() ?: 0) + (irisV3Motions?.size() ?: 0) + (domeMotions?.size() ?: 0)) ?: "0"} connected) =-")
 		{ 
 			input "genericMotions", "capability.motionSensor", title: "Motion Sensors (motion):", required: false, multiple: true, defaultValue: null
 			input "irisV3Motions", "capability.motionSensor", title: "Motion Sensors (motion, temperature, humidity):", required: false, multiple: true, defaultValue: null
@@ -1435,5 +1435,5 @@ def getVersions()
 }
 
 def getIsConnected(){(state?.clientURI?.size() > 0 && state?.clientToken?.size() > 0) ? true : false}
-def getAppVersion() {[platform: "SmartThings", major: 1, minor: 4, build: 6004]}
+def getAppVersion() {[platform: "SmartThings", major: 1, minor: 4, build: 6005]}
 def getAppCopyright(){"© 2019 Steve White, Retail Media Concepts LLC"}
