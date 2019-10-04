@@ -48,7 +48,7 @@ preferences
 	page(name: "otherDevicePage")
 	page(name: "stCloudDevices")
 	page(name: "customDevicePage")
-    page(name: "shmConfigPage")
+        page(name: "shmConfigPage")
 }
 
 
@@ -59,7 +59,7 @@ preferences
 	"arloqcamera":		[driver: "Arlo Camera", selector: "arloQCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
 	"arrival":			[driver: "Arrival Sensor", selector: "smartThingsArrival", attr: ["presence", "battery", "tone"]],
 	"audioVolume":		[driver: "AVR", selector: "audioVolume", attr: ["switch", "mediaInputSource", "mute", "volume"]],
-    "button":			[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
+        "button":			[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
 	"contact":			[driver: "Contact Sensor", selector: "genericContacts", attr: ["contact", "temperature", "battery"]],
 	"dimmer":			[driver: "Dimmer", selector: "genericDimmers", attr: ["switch", "level"]],
 	"domemotion":		[driver: "Dome Motion Sensor", selector: "domeMotions", attr: ["motion", "temperature", "illuminance", "battery"]],
@@ -71,7 +71,7 @@ preferences
 	"keypad":			[driver: "Keypad", selector: "genericKeypads", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
 	"lock":				[driver: "Lock", selector: "genericLocks", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
 	"mobileApp":		[driver: "Mobile App", selector: "mobileApp", attr: ["presence", "notificationText"]],
-    "moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
+        "moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
 	"motion":			[driver: "Motion Sensor", selector: "genericMotions", attr: ["motion", "temperature", "battery"]],
 	"multipurpose":		[driver: "Multipurpose Sensor", selector: "genericMultipurposes", attr: ["contact", "temperature", "battery", "acceleration", "threeAxis"]],
 	"omnipurpose":		[driver: "Omnipurpose Sensor", selector: "genericOmnipurposes", attr: ["motion", "temperature", "humidity", "illuminance", "ultravioletIndex", "tamper", "battery"]],
@@ -87,9 +87,9 @@ preferences
 	"smoke":			[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
 	"switch":			[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
 	"speechSynthesis":	[driver: "SpeechSynthesis", selector: "speechSynth", attr: ["mute", "version", "volume"]],
-    "thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
+        "thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
 	"temphumidity":     [driver: "Temperature Humidity Sensor", selector: "temphumidity", attr: ["battery", "temperature", "humidity"]],
-    "valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
+        "valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
 	"windowshade":		[driver: "Window Shade", selector: "windowShades", attr: ["switch", "position", "windowShade"]],
 	"zwaverepeater":	[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
 ]
