@@ -42,6 +42,7 @@ preferences
 	page(name: "connectPage")
 	page(name: "devicePage")
 	page(name: "dynamicDevicePage")
+        page(name: "customDevicePage")
 }
 
 
@@ -215,9 +216,10 @@ def remoteDeviceCommand()
 
 	// Get the device
 	def device = getDevice(params)
-	if (device == null)
+	if (!device)
 	{
-		log.error "Could not locate a device with an id of ${device.deviceId}"
+		log.error "Could not locate a device with an id of ${param?.deviceId}"
+//		log.error "Command for an Undefined Device can not be processed."
 		return jsonResponse([status: "error"])
 	}
 	
@@ -1280,5 +1282,5 @@ def getVersions()
 }
 
 def getIsConnected(){(state?.clientURI?.size() > 0 && state?.clientToken?.size() > 0) ? true : false}
-def getAppVersion() {[platform: "Hubitat", major: 1, minor: 4, build: 6008]}
+def getAppVersion() {[platform: "Hubitat", major: 1, minor: 4, build: 6009]}
 def getAppCopyright(){"&copy; 2019 Steve White, Retail Media Concepts LLC <a href=\"https://github.com/shackrat/Hubitat-Private/blob/master/HubConnect/License%20Agreement.md\" target=\"_blank\">HubConnect License Agreement</a>"}
