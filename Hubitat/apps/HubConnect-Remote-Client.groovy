@@ -42,7 +42,7 @@ preferences
 	page(name: "connectPage")
 	page(name: "devicePage")
 	page(name: "dynamicDevicePage")
-        page(name: "customDevicePage")
+	page(name: "customDevicePage")
 }
 
 
@@ -51,45 +51,44 @@ preferences
 [
 	"arlocamera":		[driver: "Arlo Camera", selector: "arloProCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
 	"arloqcamera":		[driver: "Arlo Camera", selector: "arloQCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
-	"arrival":		[driver: "Arrival Sensor", selector: "smartThingsArrival", capability: "presenceSensor", prefGroup: "other", attr: ["presence", "battery", "tone"]],
+	"arrival":			[driver: "Arrival Sensor", selector: "smartThingsArrival", capability: "presenceSensor", prefGroup: "other", attr: ["presence", "battery", "tone"]],
 	"audioVolume":		[driver: "AVR", selector: "audioVolume", capability: "audioVolume", prefGroup: "other", attr: ["switch", "mediaInputSource", "mute", "volume"]],
-	"button":		[driver: "Button", selector: "genericButtons", capability: "pushableButton", prefGroup: "other", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
-	"contact":		[driver: "Contact Sensor", selector: "genericContacts", capability: "contactSensor", prefGroup: "sensors", attr: ["contact", "temperature", "battery"]],
-	"dimmer":		[driver: "Dimmer", selector: "genericDimmers", capability: "switchLevel", prefGroup: "switches", attr: ["switch", "level"]],
+	"button":			[driver: "Button", selector: "genericButtons", capability: "pushableButton", prefGroup: "other", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
+	"contact":			[driver: "Contact Sensor", selector: "genericContacts", capability: "contactSensor", prefGroup: "sensors", attr: ["contact", "temperature", "battery"]],
+	"dimmer":			[driver: "Dimmer", selector: "genericDimmers", capability: "switchLevel", prefGroup: "switches", attr: ["switch", "level"]],
 	"domemotion":		[driver: "Dome Motion Sensor", selector: "domeMotions", capability: "motionSensor", prefGroup: "sensors", attr: ["motion", "temperature", "illuminance", "battery"]],
 	"energyplug":		[driver: "DomeAeon Plug", selector: "energyPlugs", capability: "energyMeter", prefGroup: "switches", attr: ["switch", "power", "voltage", "current", "energy", "acceleration"]],
 	"fancontrol":		[driver: "Fan Controller", selector: "fanControl", capability: "fanControl", prefGroup: "switches", attr: ["speed"]],
-	"fanspeed":		[driver: "FanSpeed Controller", selector: "fanSpeedControl", capability: "fanControl", prefGroup: "switches", attr: ["speed"]],
+	"fanspeed":			[driver: "FanSpeed Controller", selector: "fanSpeedControl", capability: "fanControl", prefGroup: "switches", attr: ["speed"]],
 	"garagedoor":		[driver: "Garage Door", selector: "garageDoors", capability: "garageDoorControl", prefGroup: "other", attr: ["door", "contact"]],
 	"gvomnisensor":		[driver: "GvOmniSensor", selector: "gvOmniSensor", capability: "waterSensor", prefGroup: "sensors", attr: ["acceleration", "carbonDioxide", "carbonMonoxide", "contact", "humidity", "illuminance", "motion", "presence", "smoke", "temperature", "variable", "water"]],
-	"irissmartplug":	[driver: "Iris Smart Plug", selector: "smartPlugs", capability: "device.IrisSmartPlug", prefGroup: "shackrat", attr: ["switch", "power", "voltage", "ACFrequency"]],
+	"irissmartplug":		[driver: "Iris Smart Plug", selector: "smartPlugs", capability: "device.IrisSmartPlug", prefGroup: "shackrat", attr: ["switch", "power", "voltage", "ACFrequency"]],
 	"irisv3motion":		[driver: "IrisV3 Motion Sensor", selector: "irisV3Motions", capability: "motionSensor", prefGroup: "sensors", attr: ["motion", "temperature", "humidity", "battery"]],
-	"keypad":		[driver: "Keypad", selector: "genericKeypads", capability: "securityKeypad", prefGroup: "safety", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
+	"keypad":			[driver: "Keypad", selector: "genericKeypads", capability: "securityKeypad", prefGroup: "safety", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
 	"lock":			[driver: "Lock", selector: "genericLocks", capability: "lock", prefGroup: "safety", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
 	"mobileApp":		[driver: "Mobile App", selector: "mobileApp", capability: "notification", prefGroup: "other", attr: ["presence", "notificationText"]],
-	"moisture":		[driver: "Moisture Sensor", selector: "genericMoistures", capability: "waterSensor", prefGroup: "safety", attr: ["water", "temperature", "battery"]],
-	"motion":		[driver: "Motion Sensor", selector: "genericMotions", capability: "motionSensor", prefGroup: "sensors", attr: ["motion", "temperature", "battery"]],
+	"moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", capability: "waterSensor", prefGroup: "safety", attr: ["water", "temperature", "battery"]],
+	"motion":			[driver: "Motion Sensor", selector: "genericMotions", capability: "motionSensor", prefGroup: "sensors", attr: ["motion", "temperature", "battery"]],
 	"multipurpose":		[driver: "Multipurpose Sensor", selector: "genericMultipurposes", capability: "accelerationSensor", prefGroup: "sensors", attr: ["contact", "temperature", "battery", "acceleration", "threeAxis"]],
 	"omnipurpose":		[driver: "Omnipurpose Sensor", selector: "genericOmnipurposes", capability: "relativeHumidityMeasurement", prefGroup: "sensors", attr: ["motion", "temperature", "humidity", "illuminance", "ultravioletIndex", "tamper", "battery"]],
 	"pocketsocket":		[driver: "Pocket Socket", selector: "pocketSockets", capability: "switch", prefGroup: "switches", attr: ["switch", "power"]],
-	"power":		[driver: "Power Meter", selector: "powerMeters", capability: "powerMeter", prefGroup: "switches", attr: ["power"]],
-	"presence":		[driver: "Presence Sensor", selector: "genericPresences", capability: "presenceSensor", prefGroup: "other", attr: ["presence", "battery"]],
-	"ringcamera":		[driver: "Ring Floodlight Camera", selector: "ringfloodlight", capability: "motionSensor", prefGroup: "other", attr: ["switch", "motion"]],
-        "ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", capability: "motionSensor", prefGroup: "other", attr: ["numberOfButtons", "pushed", "motion"]],
-	"rgbbulb":		[driver: "RGB Bulb", selector: "genericRGBs", capability: "colorControl", prefGroup: "switches", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
-	"rgbwbulb":		[driver: "RGBW Bulb", selector: "genericRGBW", capability: "colorMode", prefGroup: "switches", attr: ["switch", "level", "hue", "saturation", "RGB(w)", "color", "colorMode", "colorTemperature"]],
-	"shock":		[driver: "Shock Sensor", selector: "genericShocks", capability: "shockSensor", prefGroup: "sensors", attr: ["shock", "battery"]],
-	"siren":		[driver: "Siren", selector: "genericSirens", capability: "alarm", prefGroup: "safety", attr: ["switch", "alarm", "battery"]],
+	"power":			[driver: "Power Meter", selector: "powerMeters", capability: "powerMeter", prefGroup: "switches", attr: ["power"]],
+	"presence":			[driver: "Presence Sensor", selector: "genericPresences", capability: "presenceSensor", prefGroup: "other", attr: ["presence", "battery"]],
+	"ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", attr: ["numberOfButtons", "pushed", "motion"]],
+	"rgbbulb":			[driver: "RGB Bulb", selector: "genericRGBs", capability: "colorControl", prefGroup: "switches", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
+	"rgbwbulb":			[driver: "RGBW Bulb", selector: "genericRGBW", capability: "colorMode", prefGroup: "switches", attr: ["switch", "level", "hue", "saturation", "RGB(w)", "color", "colorMode", "colorTemperature"]],
+	"shock":			[driver: "Shock Sensor", selector: "genericShocks", capability: "shockSensor", prefGroup: "sensors", attr: ["shock", "battery"]],
+	"siren":			[driver: "Siren", selector: "genericSirens", capability: "alarm", prefGroup: "safety", attr: ["switch", "alarm", "battery"]],
 	"smartsmoke":		[driver: "Smart Smoke/CO", selector: "smartSmokeCO", capability: "device.HaloSmokeAlarm", prefGroup: "safety", attr: ["smoke", "carbonMonoxide", "battery", "temperature", "humidity", "switch", "level", "hue", "saturation", "pressure"]],
-	"smoke":		[driver: "Smoke/CO Detector", selector: "genericSmokeCO", capability: "smokeDetector", prefGroup: "safety", attr: ["smoke", "carbonMonoxide", "battery"]],
+	"smoke":			[driver: "Smoke/CO Detector", selector: "genericSmokeCO", capability: "smokeDetector", prefGroup: "safety", attr: ["smoke", "carbonMonoxide", "battery"]],
 	"speechSynthesis":	[driver: "SpeechSynthesis", selector: "speechSynth", capability: "speechSynthesis", prefGroup: "other", attr: ["mute", "version", "volume"]],
-	"switch":		[driver: "Switch", selector: "genericSwitches", capability: "switch", prefGroup: "switches", attr: ["switch"]],
-	"temphumidity":         [driver: "Temperature Humidity Sensor", selector: "temphumidity", capability: "relativeHumidityMeasurement", prefGroup: "sensors", attr: ["battery", "temperature", "humidity"]],
+	"switch":			[driver: "Switch", selector: "genericSwitches", capability: "switch", prefGroup: "switches", attr: ["switch"]],
 	"thermostat":		[driver: "Thermostat", selector: "genericThermostats", capability: "thermostat", prefGroup: "other", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
 	"windowshade":		[driver: "Window Shade", selector: "windowShades", capability: "windowShade", prefGroup: "other", attr: ["switch", "position", "windowShade"]],
-	"valve":		[driver: "Valve", selector: "genericValves", capability: "valve", prefGroup: "other", attr: ["valve"]],
-	"zwaverepeater":	[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", capability: "device.IrisZ-WaveRepeater", prefGroup: "shackrat", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
+	"valve":			[driver: "Valve", selector: "genericValves", capability: "valve", prefGroup: "other", attr: ["valve"]],
+	"zwaverepeater":		[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", capability: "device.IrisZ-WaveRepeater", prefGroup: "shackrat", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
 ]
+
 
 // Mapping to receive events
 mappings
@@ -194,7 +193,7 @@ def getDevice(params)
 		{
 	 	  groupname, device ->
 			if (foundDevice != null) return
-			foundDevice = settings."custom_${device.selector}".find{it.id == params.deviceId}
+			foundDevice = settings."custom_${groupname}".find{it.id == params.deviceId}
 		}
 	}
 	return foundDevice
@@ -216,10 +215,9 @@ def remoteDeviceCommand()
 
 	// Get the device
 	def device = getDevice(params)
-	if (!device)
+	if (device == null)
 	{
-		log.error "Could not locate a device with an id of ${param?.deviceId}"
-//		log.error "Command for an Undefined Device can not be processed."
+		log.error "Could not locate a device with an id of ${params.deviceId}"
 		return jsonResponse([status: "error"])
 	}
 	
@@ -232,34 +230,8 @@ def remoteDeviceCommand()
 		return jsonResponse([status: "error"])
 	}
 
-	// Handle remaining commands
-	else if (params.deviceCommand != "")
-	{
-		switch (commandParams?.size())
-		{
-			case 1:
-				device."${params.deviceCommand}"(commandParams[0])
-				break
-			case 2:
-				device."${params.deviceCommand}"(commandParams[0], commandParams[1])
-				break
-			case 3:
-				device."${params.deviceCommand}"(commandParams[0], commandParams[1], commandParams[2])
-				break
-			case 4:
-				device."${params.deviceCommand}"(commandParams[0], commandParams[1], commandParams[2], commandParams[3])
-				break
-			default:
-				device."${params.deviceCommand}"()
-				break
-		}
-	}
-
-	else
-	{
-		log.error "Could not locate a device or command."
-		return jsonResponse([status: "error"])
-	}
+	// Execute the command
+	device."${params.deviceCommand}"(*commandParams)
 	
 	jsonResponse([status: "success"])
 }
@@ -348,13 +320,11 @@ def hsmReceiveAlert()
 def subscribeLocalEvents()
 {
 	unsubscribe()
-
 	if (state.connectionType == "socket")
 	{
 		log.info "Skipping event subscriptions...  Using event socket to send events to server."
 		return
-	}	
-
+	}
 	log.info "Subscribing to events.."
 
 	NATIVE_DEVICES.each
@@ -1148,7 +1118,8 @@ def devicePage()
 	def totalCustomDevices = 0
 	state.customDrivers?.each
 	{devicegroup, device ->
-		totalCustomDevices += settings."${device.selector}"?.size() ?: 0
+		///totalCustomDevices += settings."${device.selector}"?.size() ?: 0
+		totalCustomDevices += settings."custom_${devicegroup}"?.size() ?: 0
 	}
 	
 	def totalDevices = totalNativeDevices + totalCustomDevices
@@ -1282,5 +1253,5 @@ def getVersions()
 }
 
 def getIsConnected(){(state?.clientURI?.size() > 0 && state?.clientToken?.size() > 0) ? true : false}
-def getAppVersion() {[platform: "Hubitat", major: 1, minor: 4, build: 6009]}
+def getAppVersion() {[platform: "Hubitat", major: 1, minor: 4, build: 6010]}
 def getAppCopyright(){"&copy; 2019 Steve White, Retail Media Concepts LLC <a href=\"https://github.com/shackrat/Hubitat-Private/blob/master/HubConnect/License%20Agreement.md\" target=\"_blank\">HubConnect License Agreement</a>"}
