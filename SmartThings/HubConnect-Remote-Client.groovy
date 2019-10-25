@@ -48,7 +48,7 @@ preferences
 	page(name: "otherDevicePage")
 	page(name: "stCloudDevices")
 	page(name: "customDevicePage")
-        page(name: "shmConfigPage")
+    page(name: "shmConfigPage")
 }
 
 
@@ -59,7 +59,7 @@ preferences
 	"arloqcamera":		[driver: "Arlo Camera", selector: "arloQCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
 	"arrival":			[driver: "Arrival Sensor", selector: "smartThingsArrival", attr: ["presence", "battery", "tone"]],
 	"audioVolume":		[driver: "AVR", selector: "audioVolume", attr: ["switch", "mediaInputSource", "mute", "volume"]],
-        "button":			[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
+	"button":			[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
 	"contact":			[driver: "Contact Sensor", selector: "genericContacts", attr: ["contact", "temperature", "battery"]],
 	"dimmer":			[driver: "Dimmer", selector: "genericDimmers", attr: ["switch", "level"]],
 	"domemotion":		[driver: "Dome Motion Sensor", selector: "domeMotions", attr: ["motion", "temperature", "illuminance", "battery"]],
@@ -71,7 +71,7 @@ preferences
 	"keypad":			[driver: "Keypad", selector: "genericKeypads", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
 	"lock":				[driver: "Lock", selector: "genericLocks", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
 	"mobileApp":		[driver: "Mobile App", selector: "mobileApp", attr: ["presence", "notificationText"]],
-        "moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
+	"moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
 	"motion":			[driver: "Motion Sensor", selector: "genericMotions", attr: ["motion", "temperature", "battery"]],
 	"multipurpose":		[driver: "Multipurpose Sensor", selector: "genericMultipurposes", attr: ["contact", "temperature", "battery", "acceleration", "threeAxis"]],
 	"omnipurpose":		[driver: "Omnipurpose Sensor", selector: "genericOmnipurposes", attr: ["motion", "temperature", "humidity", "illuminance", "ultravioletIndex", "tamper", "battery"]],
@@ -79,17 +79,15 @@ preferences
 	"power":			[driver: "Power Meter", selector: "powerMeters", attr: ["power"]],
 	"presence":			[driver: "Presence Sensor", selector: "genericPresences", attr: ["presence", "battery"]],
 	"ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", attr: ["numberOfButtons", "pushed", "motion"]],
-	"ringcamera":		[driver: "Ring Floodlight Camera", selector: "ringfloodlight", attr: ["switch", "motion"]],
 	"rgbbulb":			[driver: "RGB Bulb", selector: "genericRGBs", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
 	"shock":			[driver: "Shock Sensor", selector: "genericShocks", attr: ["shock", "battery"]],
 	"siren":			[driver: "Siren", selector: "genericSirens", attr: ["switch", "alarm", "battery"]],
 	"smartsmoke":		[driver: "Smart Smoke/CO", selector: "smartSmokeCO", attr: ["smoke", "carbonMonoxide", "battery", "temperature", "humidity", "switch", "level", "hue", "saturation", "pressure"]],
 	"smoke":			[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
-	"switch":			[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
 	"speechSynthesis":	[driver: "SpeechSynthesis", selector: "speechSynth", attr: ["mute", "version", "volume"]],
-        "thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
-	"temphumidity":     [driver: "Temperature Humidity Sensor", selector: "temphumidity", attr: ["battery", "temperature", "humidity"]],
-        "valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
+	"switch":			[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
+	"thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
+	"valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
 	"windowshade":		[driver: "Window Shade", selector: "windowShades", attr: ["switch", "position", "windowShade"]],
 	"zwaverepeater":	[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
 ]
@@ -194,7 +192,7 @@ def getDevice(params)
 		{
 	 	  groupname, device ->
 			if (foundDevice != null) return
-			foundDevice = settings."custom_${device.selector}".find{it.id == params.deviceId}
+			foundDevice = settings."custom_${groupname}".find{it.id == params.deviceId}
 		}
 	}
 	return foundDevice
@@ -216,10 +214,10 @@ def remoteDeviceCommand()
 
 	// Get the device
 	def device = getDevice(params)
-	if (device == null)
+	if (!device)
 	{
-		// log.error "Could not locate a device with an id of ${device?.deviceId}"
-		log.error "Command for an Undefined Device can not be processed."
+		log.error "Could not locate a device with an id of ${param?.deviceId}"
+//		log.error "Command for an Undefined Device can not be processed."
 		return jsonResponse([status: "error"])
 	}
 	
@@ -573,7 +571,7 @@ def deviceEvent()
 
 	def event = parseJson(new String(eventraw))
 	def data = event?.data ?: ""
-    def unit = event?.unit ?: ""
+	def unit = event?.unit ?: ""
 
 	def childDevice = getChildDevices()?.find { it.deviceNetworkId == "${serverIP}:${params.deviceId}"}
 	if (childDevice)
@@ -1093,12 +1091,12 @@ def connectPage()
 */
 def devicePage()
 {
-	def sensorsPageCount = genericContacts?.size() ?: genericMultipurposes?.size() ?: genericOmnipurposes?.size() ?: temphumidity?.size() ?: genericMotions?.size() ?: irisV3Motions?.size() ?: domeMotions?.size() ?: genericShocks?.size()
+	def sensorsPageCount = genericContacts?.size() ?: genericMultipurposes?.size() ?: genericOmnipurposes?.size() ?: genericMotions?.size() ?: irisV3Motions?.size() ?: domeMotions?.size() ?: genericShocks?.size()
 	def shackratsDriverPageCount = smartPlugs?.size() ?: zwaveRepeaters?.size()
 	def switchDimmerBulbPageCount = genericSwitches?.size() ?: genericDimmers?.size() ?: genericRGBs?.size() ?: pocketSockets?.size() ?: energyPlugs?.size() ?: powerMeters?.size()
 	def safetySecurityPageCount = genericSmokeCO?.size() ?: smartSmokeCO?.size() ?: genericMoistures?.size() ?: genericKeypads?.size() ?: genericLocks?.size() ?: genericSirens?.size()
 	def otherDevicePageCount = genericPresences?.size()?: smartThingsArrival?.size() ?: genericButtons?.size() ?: genericThermostats?.size() ?: genericValves?.size() ?: garageDoors?.size() ?: speechSynth?.size() ?: windowShades?.size() ?: audioVolume?.size() ?: mobileApp?.size()
-	def stCloudDevicesCount = arloProCameras?.size() ?: arloQCameras?.size() ?: ringDoorbellPros?.size() ?: ringfloodlight?.size()
+	def stCloudDevicesCount = arloProCameras?.size() ?: arloQCameras?.size() ?: ringDoorbellPros?.size()
 
 	def totalNativeDevices = 0
 	def requiredDrivers = []
@@ -1114,7 +1112,8 @@ def devicePage()
 	def totalCustomDevices = 0
 	state.customDrivers?.each
 	{devicegroup, device ->
-		totalCustomDevices += settings."${device.selector}"?.size() ?: 0
+		///totalCustomDevices += settings."${device.selector}"?.size() ?: 0
+		totalCustomDevices += settings."custom_${devicegroup}"?.size() ?: 0
 	}
 	
 	def totalDevices = totalNativeDevices + totalCustomDevices
@@ -1166,10 +1165,6 @@ def sensorsPage()
 		section("-= Select Omnipurpose Sensors (${genericOmnipurposes?.size() ?: "0"} connected) =-")
 		{ 
 			input "genericOmnipurposes", "capability.relativeHumidityMeasurement", title: "Generic Omni-Sensor (contact, temperature, humidity, illuminance):", required: false, multiple: true, defaultValue: null
-		}
-        section("-= Select Temperature Humidity Sensors (${temphumidity?.size() ?: "0"} connected) =-")
-		{ 
-			input "temphumidity", "capability.relativeHumidityMeasurement", title: "Temperature Humidity Sensor (temperature, humidity):", required: false, multiple: true, defaultValue: null
 		}
 		section("-= Select Motion Sensors (${((genericMotions?.size() ?: 0) + (irisV3Motions?.size() ?: 0) + (domeMotions?.size() ?: 0)) ?: "0"} connected) =-")
 		{ 
@@ -1241,7 +1236,7 @@ def switchDimmerBulbPage()
 		{ 
 			input "pocketSockets", "capability.switch", title: "Pocket Sockets (switch, power):", required: false, multiple: true, defaultValue: null
 		}
-		section("-= Select Smart Plug Devices (${energyPlugs?.size() ?: "0"} connected) =-")
+		section("-= Select Smart Plug Devices (${energyPlugs?.size() ?: "0"} connected) =- ")
 		{ 
 			input "energyPlugs", "capability.energyMeter", title: "Aeon/Dome Smart Plugs (switch, power, voltage, energy, acceleration, current):", required: false, multiple: true, defaultValue: null
 		}
@@ -1377,10 +1372,6 @@ def stCloudDevices()
 		{
 			input "ringDoorbellPros", "device.RingDoorbellPro", title: "Ring Doorbell Pros (pushed, motion):", required: false, multiple: true, defaultValue: null
 		}
-		section("-= Ring Floodlight Cameras =-")
-		{
-			input "ringfloodlight", "capability.motionSensor", title: "Ring Floodlight Cameras (switch, motion):", required: false, multiple: true, defaultValue: null
-		}
 	}
 }
 
@@ -1452,5 +1443,5 @@ def getVersions()
 }
 
 def getIsConnected(){(state?.clientURI?.size() > 0 && state?.clientToken?.size() > 0) ? true : false}
-def getAppVersion() {[platform: "SmartThings", major: 1, minor: 4, build: 6006]}
+def getAppVersion() {[platform: "SmartThings", major: 1, minor: 4, build: 6007]}
 def getAppCopyright(){"© 2019 Steve White, Retail Media Concepts LLC"}
