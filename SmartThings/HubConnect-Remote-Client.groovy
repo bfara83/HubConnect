@@ -57,41 +57,42 @@ preferences
 [
 	"arlocamera":		[driver: "Arlo Camera", selector: "arloProCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
 	"arloqcamera":		[driver: "Arlo Camera", selector: "arloQCameras", attr: ["switch", "motion", "sound", "rssi", "battery"]],
-	"arrival":			[driver: "Arrival Sensor", selector: "smartThingsArrival", attr: ["presence", "battery", "tone"]],
+	"arrival":		[driver: "Arrival Sensor", selector: "smartThingsArrival", attr: ["presence", "battery", "tone"]],
 	"audioVolume":		[driver: "AVR", selector: "audioVolume", attr: ["switch", "mediaInputSource", "mute", "volume"]],
-	"button":			[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
-	"contact":			[driver: "Contact Sensor", selector: "genericContacts", attr: ["contact", "temperature", "battery"]],
-	"dimmer":			[driver: "Dimmer", selector: "genericDimmers", attr: ["switch", "level"]],
+	"button":		[driver: "Button", selector: "genericButtons", attr: ["numberOfButtons", "pushed", "held", "doubleTapped", "button", "temperature", "battery"]],
+	"contact":		[driver: "Contact Sensor", selector: "genericContacts", attr: ["contact", "temperature", "battery"]],
+	"dimmer":		[driver: "Dimmer", selector: "genericDimmers", attr: ["switch", "level"]],
 	"domemotion":		[driver: "Dome Motion Sensor", selector: "domeMotions", attr: ["motion", "temperature", "illuminance", "battery"]],
 	"energyplug":		[driver: "DomeAeon Plug", selector: "energyPlugs", attr: ["switch", "power", "voltage", "current", "energy", "acceleration"]],
 	"fancontrol":		[driver: "Fan Controller", selector: "fanControl", attr: ["speed"]],
 	"garagedoor":		[driver: "Garage Door", selector: "garageDoors", attr: ["door", "contact"]],
 	"irissmartplug":	[driver: "Iris Smart Plug", selector: "smartPlugs", attr: ["switch", "power", "voltage", "ACFrequency"]],
 	"irisv3motion":		[driver: "IrisV3 Motion Sensor", selector: "irisV3Motions", attr: ["motion", "temperature", "humidity", "battery"]],
-	"keypad":			[driver: "Keypad", selector: "genericKeypads", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
-	"lock":				[driver: "Lock", selector: "genericLocks", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
+	"keypad":		[driver: "Keypad", selector: "genericKeypads", attr: ["motion", "temperature", "battery", "tamper", "alarm", "lastCodeName"]],
+	"lock":			[driver: "Lock", selector: "genericLocks", attr: ["lock", "lockCodes", "lastCodeName", "codeChanged", "codeLength", "maxCodes", "battery"]],
 	"mobileApp":		[driver: "Mobile App", selector: "mobileApp", attr: ["presence", "notificationText"]],
-	"moisture":			[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
-	"motion":			[driver: "Motion Sensor", selector: "genericMotions", attr: ["motion", "temperature", "battery"]],
+	"moisture":		[driver: "Moisture Sensor", selector: "genericMoistures", attr: ["water", "temperature", "battery"]],
+	"motion":		[driver: "Motion Sensor", selector: "genericMotions", attr: ["motion", "temperature", "battery"]],
 	"multipurpose":		[driver: "Multipurpose Sensor", selector: "genericMultipurposes", attr: ["contact", "temperature", "battery", "acceleration", "threeAxis"]],
 	"omnipurpose":		[driver: "Omnipurpose Sensor", selector: "genericOmnipurposes", attr: ["motion", "temperature", "humidity", "illuminance", "ultravioletIndex", "tamper", "battery"]],
 	"pocketsocket":		[driver: "Pocket Socket", selector: "pocketSockets", attr: ["switch", "power"]],
-	"power":			[driver: "Power Meter", selector: "powerMeters", attr: ["power"]],
-	"presence":			[driver: "Presence Sensor", selector: "genericPresences", attr: ["presence", "battery"]],
-	"ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", attr: ["numberOfButtons", "pushed", "motion"]],
-	"rgbbulb":			[driver: "RGB Bulb", selector: "genericRGBs", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
-	"shock":			[driver: "Shock Sensor", selector: "genericShocks", attr: ["shock", "battery"]],
-	"siren":			[driver: "Siren", selector: "genericSirens", attr: ["switch", "alarm", "battery"]],
+	"power":		[driver: "Power Meter", selector: "powerMeters", attr: ["power"]],
+	"presence":		[driver: "Presence Sensor", selector: "genericPresences", attr: ["presence", "battery"]],
+	"ringcamera":		[driver: "Ring Floodlight Camera", selector: "ringfloodlight", attr: ["switch", "motion"]],
+        "ringdoorbell":		[driver: "Ring Doorbell", selector: "ringDoorbellPros", attr: ["numberOfButtons", "pushed", "motion"]],
+	"rgbbulb":		[driver: "RGB Bulb", selector: "genericRGBs", attr: ["switch", "level", "hue", "saturation", "RGB", "color", "colorMode", "colorTemperature"]],
+	"shock":		[driver: "Shock Sensor", selector: "genericShocks", attr: ["shock", "battery"]],
+	"siren":		[driver: "Siren", selector: "genericSirens", attr: ["switch", "alarm", "battery"]],
 	"smartsmoke":		[driver: "Smart Smoke/CO", selector: "smartSmokeCO", attr: ["smoke", "carbonMonoxide", "battery", "temperature", "humidity", "switch", "level", "hue", "saturation", "pressure"]],
-	"smoke":			[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
+	"smoke":		[driver: "Smoke/CO Detector", selector: "genericSmokeCO", attr: ["smoke", "carbonMonoxide", "battery"]],
 	"speechSynthesis":	[driver: "SpeechSynthesis", selector: "speechSynth", attr: ["mute", "version", "volume"]],
-	"switch":			[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
-	"thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
-	"valve":			[driver: "Valve", selector: "genericValves", attr: ["valve"]],
+	"switch":		[driver: "Switch", selector: "genericSwitches", attr: ["switch"]],
+	"temphumidity":         [driver: "Temperature Humidity Sensor", selector: "temphumidity", attr: ["battery", "temperature", "humidity"]],
+        "thermostat":		[driver: "Thermostat", selector: "genericThermostats", attr: ["coolingSetpoint", "heatingSetpoint", "schedule", "supportedThermostatFanModes", "supportedThermostatModes", "temperature", "thermostatFanMode", "thermostatMode", "thermostatOperatingState", "thermostatSetpoint"]],
+	"valve":		[driver: "Valve", selector: "genericValves", attr: ["valve"]],
 	"windowshade":		[driver: "Window Shade", selector: "windowShades", attr: ["switch", "position", "windowShade"]],
 	"zwaverepeater":	[driver: "Iris Z-Wave Repeater", selector: "zwaveRepeaters", attr: ["status", "lastRefresh", "deviceMSR", "lastMsgRcvd"]]
 ]
-
 
 // Mapping to receive events - Note: ST can only support 4 path parts!
 mappings
@@ -1091,12 +1092,12 @@ def connectPage()
 */
 def devicePage()
 {
-	def sensorsPageCount = genericContacts?.size() ?: genericMultipurposes?.size() ?: genericOmnipurposes?.size() ?: genericMotions?.size() ?: irisV3Motions?.size() ?: domeMotions?.size() ?: genericShocks?.size()
+	def sensorsPageCount = genericContacts?.size() ?: genericMultipurposes?.size() ?: genericOmnipurposes?.size() ?: temphumidity?.size() ?: genericMotions?.size() ?: irisV3Motions?.size() ?: domeMotions?.size() ?: genericShocks?.size()
 	def shackratsDriverPageCount = smartPlugs?.size() ?: zwaveRepeaters?.size()
 	def switchDimmerBulbPageCount = genericSwitches?.size() ?: genericDimmers?.size() ?: genericRGBs?.size() ?: pocketSockets?.size() ?: energyPlugs?.size() ?: powerMeters?.size()
 	def safetySecurityPageCount = genericSmokeCO?.size() ?: smartSmokeCO?.size() ?: genericMoistures?.size() ?: genericKeypads?.size() ?: genericLocks?.size() ?: genericSirens?.size()
 	def otherDevicePageCount = genericPresences?.size()?: smartThingsArrival?.size() ?: genericButtons?.size() ?: genericThermostats?.size() ?: genericValves?.size() ?: garageDoors?.size() ?: speechSynth?.size() ?: windowShades?.size() ?: audioVolume?.size() ?: mobileApp?.size()
-	def stCloudDevicesCount = arloProCameras?.size() ?: arloQCameras?.size() ?: ringDoorbellPros?.size()
+	def stCloudDevicesCount = arloProCameras?.size() ?: arloQCameras?.size() ?: ringDoorbellPros?.size() ?: ringfloodlight?.size()
 
 	def totalNativeDevices = 0
 	def requiredDrivers = []
@@ -1165,6 +1166,10 @@ def sensorsPage()
 		section("-= Select Omnipurpose Sensors (${genericOmnipurposes?.size() ?: "0"} connected) =-")
 		{ 
 			input "genericOmnipurposes", "capability.relativeHumidityMeasurement", title: "Generic Omni-Sensor (contact, temperature, humidity, illuminance):", required: false, multiple: true, defaultValue: null
+		}
+        section("-= Select Temperature Humidity Sensors (${temphumidity?.size() ?: "0"} connected) =-")
+		{ 
+			input "temphumidity", "capability.relativeHumidityMeasurement", title: "Temperature Humidity Sensor (temperature, humidity):", required: false, multiple: true, defaultValue: null
 		}
 		section("-= Select Motion Sensors (${((genericMotions?.size() ?: 0) + (irisV3Motions?.size() ?: 0) + (domeMotions?.size() ?: 0)) ?: "0"} connected) =-")
 		{ 
@@ -1371,6 +1376,10 @@ def stCloudDevices()
 		section("-= Ring Doorbell Pros =-")
 		{
 			input "ringDoorbellPros", "device.RingDoorbellPro", title: "Ring Doorbell Pros (pushed, motion):", required: false, multiple: true, defaultValue: null
+		}
+        section("-= Ring Floodlight Cameras =-")
+		{
+			input "ringfloodlight", "capability.motionSensor", title: "Ring Floodlight Cameras (switch, motion):", required: false, multiple: true, defaultValue: null
 		}
 	}
 }
