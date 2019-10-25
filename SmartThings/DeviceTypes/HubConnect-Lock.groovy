@@ -213,4 +213,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "lock")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 3, build: 6001]}
+def getDriverVersion() {[platform: "SmartThings", major: 1, minor: 3, build: 6001]}
