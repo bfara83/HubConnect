@@ -726,16 +726,18 @@ def versionReportPage()
 				v.report?.apps?.sort()?.each
 				{
 					def latest = (it?.appVersion?.platform != null && state?.currentVersions != null) ? atomicState.currentVersions?.(it.appVersion.platform.toLowerCase())?.app?.(it.appName) : null
+					def currentVersion = latest ?  "<span style=\"color:${isNewer(latest, it?.appVersion) ? "red" : "black"}\">${it?.appVersion?.major}.${it?.appVersion?.minor}.${it?.appVersion?.build}</span>" : ""
 					def latestVersion = latest ?  "<span style=\"color:${isNewer(latest, it?.appVersion) ? "red" : "green"}\">${latest.major}.${latest.minor}.${latest.build}</span>" : ""
-					html += "<tr><td>${it?.appName}</td><td>app</td><td>${it?.appVersion?.platform}</td><td>${it?.appVersion?.major}.${it?.appVersion?.minor}.${it?.appVersion?.build}</td><td>${latestVersion}</td></tr>"
+					html += "<tr><td>${it?.appName}</td><td>app</td><td>${it?.appVersion?.platform}</td><td>${currentVersion}</td><td>${latestVersion}</td></tr>"
 				}
 				v.report?.drivers?.sort()?.each
 				{
 			 	  dk, dv ->
 	
 					def latest = (dv?.platform != null && state?.currentVersions != null) ? atomicState.currentVersions?.(dv.platform.toLowerCase())?.driver?.(dk?.toString()) : null
+					def currentVersion = latest ?  "<span style=\"color:${isNewer(latest, dv) ? "red" : "black"}\">${dv?.major}.${dv?.minor}.${dv?.build}</span>" : ""
 					def latestVersion = latest ?  "<span style=\"color:${isNewer(latest, dv) ? "red" : "green"}\">${latest.major}.${latest.minor}.${latest.build}</span>" : ""
-					html += "<tr><td>${dk}</td><td>driver</td><td>${dv?.platform}</td><td>${dv?.major}.${dv?.minor}.${dv?.build}</td><td>${latestVersion}</td></tr>"
+					html += "<tr><td>${dk}</td><td>driver</td><td>${dv?.platform}</td><td>${currentVersion}</td><td>${latestVersion}</td></tr>"
 				}
 				paragraph "${html}</tbody></table>"
 			}
@@ -840,7 +842,8 @@ def versionCheck()
 
 	def requestParams =
 	[
-		uri: "http://irisusers.com/hubitat/hubconnect/latest.php?s=${token}",
+		//uri: "http://irisusers.com/hubitat/hubconnect/latest.php?s=${token}",
+		uri: "http://hubconnect.hubitatcommunity.com/latest.php?s=${token}",
 		requestContentType: 'application/json',
 		contentType: 'application/json'
 	]
@@ -863,5 +866,5 @@ def versionCheckResponse(response, data)
 }
 
 def isNewer(latest, installed) { (latest.major.toInteger() > installed.major ||  (latest.major.toInteger() == installed.major && latest.minor.toInteger() > installed.minor) || (latest.major.toInteger() == installed.major && latest.minor.toInteger() == installed.minor && latest.build.toInteger() > installed.build)) ? true : false }
-def getAppVersion() {[platform: "Hubitat", major: 1, minor: 4, build: 6001]}
+def getAppVersion() {[platform: "Hubitat", major: 1, minor: 4, build: 6002]}
 def getAppCopyright(){"&copy; 2019 Steve White, Retail Media Concepts LLC <a href=\"https://github.com/shackrat/Hubitat-Private/blob/master/HubConnect/License%20Agreement.md\" target=\"_blank\">HubConnect License Agreement</a>"}
