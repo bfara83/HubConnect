@@ -17,11 +17,12 @@
  */
 metadata 
 {
-	definition(name: "HubConnect Temperature Humidity Sensor", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-TempHumidity.groovy")
+	definition(name: "HubConnect XiaomiTempHumiditySensor", namespace: "bfara83", author: "Brad", importUrl: "https://raw.githubusercontent.com/bfara83/HubConnect/master/UniversalDrivers/HubConnect-TempHumidSensor.groovy")
 	{
 		capability "Battery"
 		capability "Relative Humidity Measurement"
 		capability "Sensor"
+        capability "PressureMeasurement"
 		capability "Temperature Measurement"
 
 		attribute "version", "string"
