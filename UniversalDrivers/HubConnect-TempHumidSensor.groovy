@@ -20,7 +20,7 @@ metadata
 	definition(name: "HubConnect XiaomiTempHumiditySensor", namespace: "bfara83", author: "Brad", importUrl: "https://raw.githubusercontent.com/bfara83/HubConnect/master/UniversalDrivers/HubConnect-TempHumidSensor.groovy")
 	{
 		capability "Battery"
-		capability "Relative Humidity Measurement"
+		capability "RelativeHumidityMeasurement"
 		capability "Sensor"
                 capability "PressureMeasurement"
 		capability "Temperature Measurement"
