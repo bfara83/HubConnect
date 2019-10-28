@@ -22,7 +22,7 @@ metadata
 		capability "Battery"
 		capability "RelativeHumidityMeasurement"
 		capability "Sensor"
-        capability "PressureMeasurement"
+                capability "PressureMeasurement"
 		capability "Temperature Measurement"
 
 		attribute "version", "string"
