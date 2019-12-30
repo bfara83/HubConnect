@@ -25,9 +25,12 @@ metadata
 		capability "Battery"
 		capability "Alarm"
 		capability "SecurityKeypad"
+        capability "Tone"
 		capability "Refresh"
+        capability "Lock Codes"
+        capability "Sensor"
 
-		attribute "version", "string"
+        attribute "version", "string"
 		attribute "lastCodeName", "string"
 		
 		command "sync"
@@ -78,6 +81,17 @@ def parse(String description)
 	log.trace "Msg: Description is $description"
 }
 
+
+/*
+	beep
+    
+	Turns the beep on (if equipped).
+*/
+def beep()
+{
+	// The server will update on/off status
+	parent.sendDeviceEvent(device.deviceNetworkId, "beep")
+}
 
 /*
 	both
@@ -174,16 +188,15 @@ def getCodes()
 	parent.sendDeviceEvent(device.deviceNetworkId, "getCodes")
 }
 
-
 /*
 	armAway
     
 	Arms the keypad to "Away".
 */
-def armAway()
+def armAway(delay)
 {
 	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "armAway")
+	parent.sendDeviceEvent(device.deviceNetworkId, "armAway", [delay])
 }
 
 
@@ -192,22 +205,32 @@ def armAway()
     
 	Arms the keypad to "Home".
 */
-def armHome()
+def armHome(delay)
 {
 	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "armHome")
+	parent.sendDeviceEvent(device.deviceNetworkId, "armHome", [delay])
 }
 
+/*
+	armNight
+    
+	Arms the keypad to "Night".
+*/
+def armNight(delay)
+{
+	// The server will update status
+	parent.sendDeviceEvent(device.deviceNetworkId, "armNight", [delay])
+}
 
 /*
 	disarm
     
 	Arms the keypad to "disarmed".
 */
-def disarm()
+def disarm(delay)
 {
 	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "disarm")
+	parent.sendDeviceEvent(device.deviceNetworkId, "disarm", [delay])
 }
 
 
