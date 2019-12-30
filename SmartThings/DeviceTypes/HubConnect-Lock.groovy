@@ -15,44 +15,48 @@
  *
  *
  */
-metadata 
+metadata
 {
 	definition(name: "HubConnect Lock", namespace: "shackrat", author: "Steve White", ocfDeviceType: "oic.d.smartlock", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/SmartThings/DeviceTypes/HubConnect-Lock.groovy")
 	{
-        capability "Actuator"
-        capability "Lock"
-        capability "Lock Codes"
+		capability "Actuator"
+		capability "Lock"
+		capability "Lock Codes"
 		capability "Battery"
 		capability "Refresh"
 
-		attribute "version", "string"
 		attribute "lastCodeName", "string"
-		
+		attribute "version", "string"
+
 		command "sync"
 	}
 
     tiles {
 		multiAttributeTile(name:"toggle", type: "generic", width: 6, height: 4)
 		{
-		    tileAttribute ("device.lock", key: "PRIMARY_CONTROL") 
+		    tileAttribute ("device.lock", key: "PRIMARY_CONTROL")
 		    {
 		        attributeState "locked", label:'locked', action:"lock.unlock", icon:"st.locks.lock.locked", backgroundColor:"#00A0DC", nextState:"unlocking"
 		        attributeState "unlocked", label:'unlocked', action:"lock.lock", icon:"st.locks.lock.unlocked", backgroundColor:"#FFFFFF", nextState:"locking"
 		        attributeState "locking", label:'locking', icon:"st.locks.lock.locked", backgroundColor:"#FFFFFF"
 		        attributeState "unlocking", label:'unlocking', icon:"st.locks.lock.unlocked", backgroundColor:"#00A0DC"
 		    }
-		    tileAttribute ("device.battery", key: "SECONDARY_CONTROL") 
+		    tileAttribute ("device.battery", key: "SECONDARY_CONTROL")
 		    {
 		        attributeState "battery", label: 'battery ${currentValue}%', unit: "%"
 		    }
 		}
-		standardTile("lock", "device.lock", inactiveLabel: false, decoration: "flat", width: 3, height: 2) 
+		standardTile("lock", "device.lock", inactiveLabel: false, decoration: "flat", width: 3, height: 2)
 		{
 		    state "default", label:'lock', action:"lock.lock", icon: "st.locks.lock.locked"
 		}
-		standardTile("unlock", "device.lock", inactiveLabel: false, decoration: "flat", width: 3, height: 2) 
+		standardTile("unlock", "device.lock", inactiveLabel: false, decoration: "flat", width: 3, height: 2)
 		{
 		    state "default", label:'unlock', action:"lock.unlock", icon: "st.locks.lock.unlocked"
+		}
+		standardTile("lastCodeName", "lastCodeName", inactiveLabel: false, decoration: "flat", width: 6, height: 1)
+		{
+		    state "default", label:'${currentValue}'
 		}
 		standardTile("refresh", "device.lock", inactiveLabel: false, decoration: "flat", width: 2, height: 2)
 		{
@@ -68,14 +72,14 @@ metadata
 		}
 
 		main "toggle"
-		details(["toggle", "lock", "unlock", "sync", "refresh", "version"])
-    }    
+		details(["toggle", "lock", "unlock", "sync", "refresh", "version", "lastCodeName"])
+    }
 }
 
 
 /*
 	installed
-    
+
 	Doesn't do much other than call initialize().
 */
 def installed()
@@ -86,7 +90,7 @@ def installed()
 
 /*
 	updated
-    
+
 	Doesn't do much other than call initialize().
 */
 def updated()
@@ -97,7 +101,7 @@ def updated()
 
 /*
 	initialize
-    
+
 	Doesn't do much other than call refresh().
 */
 def initialize()
@@ -108,7 +112,7 @@ def initialize()
 
 /*
 	parse
-    
+
 	In a virtual world this should never be called.
 */
 def parse(String description)
@@ -119,7 +123,7 @@ def parse(String description)
 
 /*
 	lock
-    
+
 	Locks the lock.
 */
 def lock()
@@ -131,7 +135,7 @@ def lock()
 
 /*
 	unlock
-    
+
 	Unlocks the lock.
 */
 def unlock()
@@ -144,7 +148,7 @@ def unlock()
 
 /*
 	setCodeLength
-    
+
 	Sets the code length for the lock.
 */
 def setCodeLength(length)
@@ -156,7 +160,7 @@ def setCodeLength(length)
 
 /*
 	deleteCode
-    
+
 	Deletes the code at slot <codeNumber> for this lock.
 */
 def deleteCode(codeNumber)
@@ -168,7 +172,7 @@ def deleteCode(codeNumber)
 
 /*
 	setCode
-    
+
 	Adds a code at slot <codeNumber> with <code> and <name> for this lock.
 */
 def setCode(codeNumber, code, name = null)
@@ -180,7 +184,7 @@ def setCode(codeNumber, code, name = null)
 
 /*
 	getCodes
-    
+
 	Fetches all codes for this lock.
 */
 def getCodes()
@@ -192,7 +196,7 @@ def getCodes()
 
 /*
 	refresh
-    
+
 	Refreshes the device by requesting an update from the client hub.
 */
 def refresh()
@@ -204,7 +208,7 @@ def refresh()
 
 /*
 	sync
-    
+
 	Synchronizes the device details with the parent.
 */
 def sync()
@@ -213,4 +217,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "lock")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "SmartThings", major: 1, minor: 3, build: 6001]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}
