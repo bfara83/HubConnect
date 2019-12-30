@@ -25,12 +25,12 @@ metadata
 		capability "Battery"
 		capability "Alarm"
 		capability "SecurityKeypad"
-        capability "Tone"
+                capability "Tone"
 		capability "Refresh"
-        capability "Lock Codes"
-        capability "Sensor"
+                capability "Lock Codes"
+                capability "Sensor"
 
-        attribute "version", "string"
+                attribute "version", "string"
 		attribute "lastCodeName", "string"
 		
 		command "sync"
