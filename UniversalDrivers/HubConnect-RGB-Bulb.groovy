@@ -185,4 +185,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "rgbbulb")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 2, build: 2]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}

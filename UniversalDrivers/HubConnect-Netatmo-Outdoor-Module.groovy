@@ -15,15 +15,22 @@
  *
  *
  */
-metadata 
+metadata
 {
-	definition(name: "HubConnect Mobile App", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-Mobile-App.groovy")
+	definition(name: "HubConnect Netatmo Outdoor Module", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-Netatmo-Outdoor-Module.groovy", mnmn: "SmartThings", vid: "SmartThings-smartthings-Xiaomi_Temperature_Humidity_Sensor", ocfDeviceType: "oic.d.thermostat")
 	{
-		capability "Presence Sensor"
-		capability "Notification"
+		capability "Temperature Measurement"
+		capability "Relative Humidity Measurement"
+		capability "Sensor"
+		capability "Battery"
+		capability "Refresh"
 
+		attribute "min_temp", "number"
+		attribute "max_temp", "number"
+		attribute "temp_trend", "string"
+		attribute "lastupdate", "string"
 		attribute "version", "string"
-		
+
 		command "sync"
 	}
 }
@@ -31,7 +38,7 @@ metadata
 
 /*
 	installed
-    
+
 	Doesn't do much other than call initialize().
 */
 def installed()
@@ -42,7 +49,7 @@ def installed()
 
 /*
 	updated
-    
+
 	Doesn't do much other than call initialize().
 */
 def updated()
@@ -53,30 +60,18 @@ def updated()
 
 /*
 	initialize
-    
+
 	Doesn't do much other than call refresh().
 */
 def initialize()
 {
-
-}
-
-
-/*
-	deviceNotification
-    
-	send a command.
-*/
-def deviceNotification(value)
-{
-	parent.sendDeviceEvent(device.deviceNetworkId, "deviceNotification", [value])
-
+	refresh()
 }
 
 
 /*
 	parse
-    
+
 	In a virtual world this should never be called.
 */
 def parse(String description)
@@ -86,14 +81,26 @@ def parse(String description)
 
 
 /*
+	refresh
+
+	Refreshes the device by requesting an update from the client hub.
+*/
+def refresh()
+{
+	// The server will update status
+	parent.sendDeviceEvent(device.deviceNetworkId, "refresh")
+}
+
+
+/*
 	sync
-    
+
 	Synchronizes the device details with the parent.
 */
 def sync()
 {
 	// The server will respond with updated status and details
-	parent.syncDevice(device.deviceNetworkId, "presence")
+	parent.syncDevice(device.deviceNetworkId, "netatmowxoutdoor")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 6, build: 4]}

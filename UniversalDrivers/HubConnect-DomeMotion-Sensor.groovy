@@ -15,9 +15,9 @@
  *
  *
  */
-metadata 
+metadata
 {
-	definition(name: "HubConnect Dome Motion Sensor", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-DomeMotion-Sensor.groovy")
+	definition(name: "HubConnect DomeMotion Sensor", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-DomeMotion-Sensor.groovy")
 	{
 		capability "Motion Sensor"
 		capability "Temperature Measurement"
@@ -26,7 +26,7 @@ metadata
 		capability "Refresh"
 
 		attribute "version", "string"
-		
+
 		command "sync"
 	}
 }
@@ -34,7 +34,7 @@ metadata
 
 /*
 	installed
-    
+
 	Doesn't do much other than call initialize().
 */
 def installed()
@@ -45,7 +45,7 @@ def installed()
 
 /*
 	updated
-    
+
 	Doesn't do much other than call initialize().
 */
 def updated()
@@ -56,7 +56,7 @@ def updated()
 
 /*
 	initialize
-    
+
 	Doesn't do much other than call refresh().
 */
 def initialize()
@@ -67,7 +67,7 @@ def initialize()
 
 /*
 	parse
-    
+
 	In a virtual world this should never be called.
 */
 def parse(String description)
@@ -78,7 +78,7 @@ def parse(String description)
 
 /*
 	refresh
-    
+
 	Refreshes the device by requesting an update from the client hub.
 */
 def refresh()
@@ -90,7 +90,7 @@ def refresh()
 
 /*
 	sync
-    
+
 	Synchronizes the device details with the parent.
 */
 def sync()
@@ -99,4 +99,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "domemotion")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 2, build: 1]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 3]}

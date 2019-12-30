@@ -28,10 +28,11 @@ metadata
 
 		attribute "version", "string"
 
-		command "push", [[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
-		command "hold", [[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
-		command "doubleTap", [[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
-		
+		command "push",			[[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
+		command "hold",			[[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
+		command "doubleTap",	[[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
+		command "released",		[[name:"NUMBER", type: "NUMBER", description: "Button number" ]]
+
 		command "sync"
 		command "test"
 	}
@@ -126,7 +127,7 @@ def doubleTap(btn)
 def released(btn)
 {
 	// The server will update released status
-	parent.sendDeviceEvent(device.deviceNetworkId, "released", [btn])
+	parent.sendDeviceEvent(device.deviceNetworkId, "release", [btn])
 }
 
 
@@ -141,4 +142,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "button")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 2, build: 1]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}

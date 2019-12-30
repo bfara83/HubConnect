@@ -17,8 +17,7 @@
  */
 metadata 
 {
-    definition(name: "HubConnect SpeechSynthesis", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-SpeechSynthesis.groovy")
-
+	definition(name: "HubConnect SpeechSynthesis", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-SpeechSynthesis.groovy")
 	{
 		capability "Actuator"
 		capability "AudioVolume"
@@ -36,33 +35,34 @@ metadata
 /*
 	installed
     
-	Doesn't do much other than call reinit().
+	Doesn't do much other than call initialize().
 */
 def installed()
 {
-	reinit()
+	initialize()
 }
 
 
 /*
 	updated
     
-	Doesn't do much other than call reinit().
+	Doesn't do much other than call initialize().
 */
 def updated()
 {
-	reinit()
+	initialize()
 }
 
 
 /*
-	reinit aka initialize
+	initialize
     
-	Doesn't do much other than call refresh().
+	Initialize the speaker.
 */
-def reinit()
+def initialize()
 {
-	refresh()
+	// The server will update status
+	parent.sendDeviceEvent(device.deviceNetworkId, "initialize")
 }
 
 
@@ -126,18 +126,6 @@ def speak(value)
 
 
 /*
-	initialize
-    
-	Initialize the speaker.
-*/
-def initialize()
-{
-	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "initialize", [value])
-}
-
-
-/*
 	volumeUp
     
 	Turns up the speaker volume.
@@ -184,4 +172,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "SpeechSynthesis")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 3, build: 1]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}

@@ -17,7 +17,7 @@
  */
 metadata 
 {
-	definition(name: "HubConnect GvOmniSensor", namespace: "shackrat", author: "Steve White", importUrl: "")
+	definition(name: "HubConnect GvOmniSensor", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-GvOmniSensor.groovy")
 	{
 		capability "Sensor"
 		capability "AccelerationSensor"
@@ -153,4 +153,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "ContactSensor")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 2, build: 1]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}

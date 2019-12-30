@@ -15,15 +15,13 @@
  *
  *
  */
-metadata 
+metadata
 {
-	definition(name: "HubConnect RGBW Bulb", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-RGBW-Bulb.groovy")
+	definition(name: "HubConnect Bulb", namespace: "shackrat", author: "Steve White", importUrl: "https://raw.githubusercontent.com/HubitatCommunity/HubConnect/master/UniversalDrivers/HubConnect-Bulb.groovy")
 	{
 		capability "Switch"
 		capability "Switch Level"
-		capability "Color Control"
-		capability "Color Temperature"
-		capability "ColorMode"
+		capability "ChangeLevel"
 		capability "Refresh"
 
 		attribute "version", "string"
@@ -35,7 +33,7 @@ metadata
 
 /*
 	installed
-    
+
 	Doesn't do much other than call initialize().
 */
 def installed()
@@ -46,7 +44,7 @@ def installed()
 
 /*
 	updated
-    
+
 	Doesn't do much other than call initialize().
 */
 def updated()
@@ -57,7 +55,7 @@ def updated()
 
 /*
 	initialize
-    
+
 	Doesn't do much other than call refresh().
 */
 def initialize()
@@ -68,7 +66,7 @@ def initialize()
 
 /*
 	parse
-    
+
 	In a virtual world this should never be called.
 */
 def parse(String description)
@@ -79,7 +77,7 @@ def parse(String description)
 
 /*
 	on
-    
+
 	Turns the device on.
 */
 def on()
@@ -91,7 +89,7 @@ def on()
 
 /*
 	off
-    
+
 	Turns the device off.
 */
 def off()
@@ -103,7 +101,7 @@ def off()
 
 /*
 	setLevel
-    
+
 	Sets the level to <level> over duration <duration>.
 */
 def setLevel(value, duration=1)
@@ -114,58 +112,32 @@ def setLevel(value, duration=1)
 
 
 /*
-	setColor
-    
-	Sets color by setting both hue and saturation as specified by <value>.
-*/
-def setColor(value)
-{
-	if (value.hue == null || value.saturation == null) return
+	startLevelChange
 
+	Starts changing the level of the bulb in [direction].
+*/
+def startLevelChange(String direction)
+{
 	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "setColor", [[hue: value.hue, saturation: value.saturation, level: value?.level]])
+	parent.sendDeviceEvent(device.deviceNetworkId, "startLevelChange", [direction])
 }
 
 
 /*
-	setHue
-    
-	Sets the Hue based on <value>.
+	stopLevelChange
+
+	Stops the level change started by startLevelChange.
 */
-def setHue(value)
+def stopLevelChange()
 {
 	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "setHue", [value])
-}
-
-
-/*
-	setSaturation
-    
-	Sets the Saturation based on <value>.
-*/
-def setSaturation(value)
-{
-	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "setSaturation", [value])
-}
-
-
-/*
-	setColorTemperature
-    
-	Sets the Color Temperature based on <value>.
-*/
-def setColorTemperature(value)
-{
-	// The server will update status
-	parent.sendDeviceEvent(device.deviceNetworkId, "setColorTemperature", [value])
+	parent.sendDeviceEvent(device.deviceNetworkId, "stopLevelChange")
 }
 
 
 /*
 	refresh
-    
+
 	Refreshes the device by requesting an update from the client hub.
 */
 def refresh()
@@ -177,7 +149,7 @@ def refresh()
 
 /*
 	sync
-    
+
 	Synchronizes the device details with the parent.
 */
 def sync()
@@ -186,4 +158,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "rgbbulb")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 6, build: 3]}

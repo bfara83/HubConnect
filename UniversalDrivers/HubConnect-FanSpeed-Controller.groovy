@@ -186,4 +186,4 @@ def sync()
 	parent.syncDevice(device.deviceNetworkId, "fancontrol")
 	sendEvent([name: "version", value: "v${driverVersion.major}.${driverVersion.minor}.${driverVersion.build}"])
 }
-def getDriverVersion() {[platform: "Universal", major: 1, minor: 4, build: 0]}
+def getDriverVersion() {[platform: "Universal", major: 1, minor: 5, build: 0]}
